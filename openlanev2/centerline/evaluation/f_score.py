@@ -37,7 +37,9 @@ Evaluation metrics includes:
 
 import numpy as np
 from scipy.interpolate import interp1d
-from ortools.graph import pywrapgraph
+# from ortools.graph import pywrapgraph
+# see https://github.com/google/or-tools/releases/tag/v9.4
+from ortools.graph.python.min_cost_flow import SimpleMinCostFlow
 
 
 def resample_laneline_in_x(input_lane, steps, out_vis=False):
@@ -79,7 +81,7 @@ def SolveMinCostFlow(adj_mat, cost_mat):
     """
 
     # Instantiate a SimpleMinCostFlow solver.
-    min_cost_flow = pywrapgraph.SimpleMinCostFlow()
+    min_cost_flow = SimpleMinCostFlow()
     # Define the directed graph for the flow.
 
     cnt_1, cnt_2 = adj_mat.shape
